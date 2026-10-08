@@ -24,8 +24,9 @@ ENV PATH="/opt/venv/bin:/usr/local/bin:/usr/bin:/bin" \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     TZ=UTC
-RUN groupadd --gid 10001 bridge \
-    && useradd --uid 10001 --gid 10001 --home-dir /data --no-create-home --shell /usr/sbin/nologin bridge \
+# Runtime PATH deliberately excludes administrative tools in /usr/sbin.
+RUN /usr/sbin/groupadd --gid 10001 bridge \
+    && /usr/sbin/useradd --uid 10001 --gid 10001 --home-dir /data --no-create-home --shell /usr/sbin/nologin bridge \
     && install -d -m 0700 -o 10001 -g 10001 /data /data/config /data/data \
     && install -d -m 0755 /usr/local/share/dot2feishu
 COPY --from=builder /opt/venv /opt/venv
