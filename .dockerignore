@@ -1,0 +1,10 @@
+# Deny by default. Never copy auth, databases, examples, notes, logs or fixtures.
+**
+!Dockerfile
+!.dockerignore
+!pyproject.toml
+!requirements-lock.txt
+!dot2feishu/
+!dot2feishu/*.py
+!scripts/
+!scripts/install_lark_cli.py

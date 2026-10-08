@@ -1,0 +1,33 @@
+services:
+  bridge:
+    image: dot2feishu:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    user: "10001:10001"
+    read_only: true
+    # Unclean exits require operator reconciliation, not a restart loop.
+    restart: "no"
+    stop_grace_period: 60s
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "127.0.0.1:${DOT2FEISHU_PORT:-8765}:8765"
+    volumes:
+      - private-data:/data
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1.0
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+volumes:
+  private-data:

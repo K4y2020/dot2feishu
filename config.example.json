@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "enabled": false,
+  "principal": "REPLACE_LOCAL_OWNER_LABEL",
+  "binding": {
+    "app_id": "REPLACE_APP_ID",
+    "bot_open_id": "REPLACE_BOT_OPEN_ID",
+    "user_open_id": "REPLACE_USER_OPEN_ID",
+    "tenant_key": "REPLACE_TENANT_KEY",
+    "chat_id": "REPLACE_PRIVATE_CHAT_ID"
+  },
+  "cli": {
+    "binary": "/usr/local/bin/lark-cli",
+    "binary_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "profile": "REPLACE_APP_ID",
+    "config_dir": "/data/config",
+    "data_dir": "/data/data",
+    "expected_bot_open_id": "REPLACE_BOT_OPEN_ID"
+  },
+  "callback_hosts": ["REPLACE_VERIFIED_MCP_CALLBACK_HOST"],
+  "mcp_http_hosts": ["REPLACE_PUBLIC_MCP_HOST", "localhost:8765", "127.0.0.1:8765"],
+  "port": 8765
+}

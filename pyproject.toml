@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dot2feishu"
+version = "0.1.0rc1"
+description = "Single-owner Feishu bot to MCP Events bridge"
+requires-python = ">=3.12"
+dependencies = ["mcp==2.3.0", "mcp-types==2.3.0", "cryptography==50.0.2", "pydantic==2.13.5", "starlette==1.7.0", "uvicorn==0.54.0"]
+
+[project.optional-dependencies]
+sdk = ["lark-oapi==1.7.3"]
+test = ["pytest==9.1.1", "httpx==0.28.1", "ruff==0.16.10"]
+
+[project.scripts]
+dot2feishu = "dot2feishu.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["dot2feishu*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
